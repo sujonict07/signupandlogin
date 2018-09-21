@@ -1,5 +1,12 @@
 {% extends 'base.html'%}
-<div class="container">
+
+
+{% block content %}
+    {% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'css/custom/login.css'%}">
+
+  <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
@@ -8,27 +15,27 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin">
+              <form class="form-signin" action="." method="POST"> {% csrf_token %}
               <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">Username</label>
+                <input type="text" id="id_username" class="form-control" name="username" placeholder="Username" required autofocus>
+                <label for="id_username">Username</label>
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                <label for="inputEmail">Email address</label>
+                <input type="email" id="id_email" name="email" class="form-control" placeholder="Email address" required>
+                <label for="id_email">Email address</label>
               </div>
 
               <hr>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+                <input type="password" id="id_password1" class="form-control" placeholder="Password" name="password1" required>
+                <label for="id_password1">Password</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                <label for="inputConfirmPassword">Confirm password</label>
+                <input type="password" id="id_password2"  name="password2" class="form-control" placeholder="Password" required>
+                <label for="id_password2">Confirm password</label>
               </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
@@ -42,3 +49,5 @@
       </div>
     </div>
   </div>
+
+{% endblock %}
